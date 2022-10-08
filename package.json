@@ -5,12 +5,18 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "@rainbow-me/rainbowkit": "0.4.2",
-    "ethers": "5.6.9",
+    "@chakra-ui/react": "^2.3.5",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@fontsource/bangers": "^4.5.9",
+    "@fontsource/league-spartan": "^4.5.12",
+    "@rainbow-me/rainbowkit": "^0.7.1",
+    "ethers": "^5.7.1",
+    "framer-motion": "^6.5.1",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-scripts": "4.0.0",
-    "wagmi": "0.5.9"
+    "react-scripts": "5.0.1",
+    "wagmi": "0.6.8"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",

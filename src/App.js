@@ -1,30 +1,48 @@
+//Importing the Rainbowkit Stylesheet.
 import "@rainbow-me/rainbowkit/styles.css";
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+
+//Importing Components for RainbowKit.
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+  lightTheme,
+} from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import { YourComponent } from "./YourComponent";
+
+//Importing App Components.
+import YourComponent from "./YourComponent.js";
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
-  [alchemyProvider({ alchemyId: process.env.ALCHEMY_ID }), publicProvider()]
+  [chain.polygon],
+  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
-  chains
+  appName: "Web3 Tbilisi Bootcamp",
+  chains,
 });
 
 const wagmiClient = createClient({
   autoConnect: true,
   connectors,
-  provider
+  provider,
 });
 
 export default function App() {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider
+        showRecentTransactions={true}
+        theme={lightTheme({
+          accentColor: "#000"
+        })}
+        appInfo={{
+          appName: "Web3 Tbilisi Bootcamp"
+        }}
+        chains={chains}
+      >
         <YourComponent />
       </RainbowKitProvider>
     </WagmiConfig>
